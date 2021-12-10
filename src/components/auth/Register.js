@@ -6,11 +6,21 @@ export const Register = (props) => {
     const [manager, setManager] = useState({})
     const [stores, setStores] = useState([])
     const conflictDialog = useRef()
-
     const history = useHistory()
 
     const existingUserCheck = () => {
-        return fetch(`https://localhost:8000/login`)
+        const checkUser = {
+            username: manager.username,
+            password: manager.password
+        }
+        return fetch(`http://localhost:8000/login`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(checkUser)
+        })
             .then(res => res.json())
             .then(user => !!user.length)
     }
@@ -28,8 +38,8 @@ export const Register = (props) => {
                     })
                         .then(res => res.json())
                         .then(createdUser => {
-                            if (createdUser.hasOwnProperty("id")) {
-                                localStorage.setItem("meta_customer", createdUser.id)
+                            if (createdUser.hasOwnProperty("token")) {
+                                localStorage.setItem("meta_customer", createdUser.token)
                                 history.push("/")
                             }
                         })
@@ -98,7 +108,7 @@ export const Register = (props) => {
                         ): ""}
                 </select>
                 <fieldset>
-                    <button type="submit"> Register </button>
+                    <button type="submit" onClick = {handleRegister}> Register </button>
                 </fieldset>
             </form>
         </main>

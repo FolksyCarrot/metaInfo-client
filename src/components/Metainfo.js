@@ -14,7 +14,7 @@ export const MetaInfo = () => (
           return (
             <>
               
-              <ApplicationViews />
+              
             </>
           );
         } else {

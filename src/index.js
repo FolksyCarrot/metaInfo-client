@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
-import { MetaInfo } from './components/Metainfo';
+import { BrowserRouter } from 'react-router-dom';
+import { MetaInfo } from './components/Metainfo.js';
 
 ReactDOM.render(
   <React.StrictMode>
