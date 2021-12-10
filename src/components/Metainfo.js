@@ -4,6 +4,7 @@ import { ApplicationViews } from "./ApplicationViews";
 
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
+import { NavBar } from "./nav/NavBar";
 
 
 export const MetaInfo = () => (
@@ -13,8 +14,7 @@ export const MetaInfo = () => (
         if (localStorage.getItem("meta_customer")) {
           return (
             <>
-              
-              
+              <NavBar /> 
             </>
           );
         } else {
