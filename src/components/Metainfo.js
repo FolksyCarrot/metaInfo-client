@@ -15,6 +15,7 @@ export const MetaInfo = () => (
           return (
             <>
               <NavBar /> 
+              <ApplicationViews />
             </>
           );
         } else {
