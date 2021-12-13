@@ -7,7 +7,10 @@ export const Employees = () => {
     const history = useHistory()
 
     const render = () => {
-        return fetch("http://localhost:8000/employees")
+        return fetch("http://localhost:8000/employees",
+        {headers: { "Authorization": `Token ${localStorage.getItem("meta_customer")}`}
+
+        })
             .then(res => res.json())
             .then((data) => {
                 setEmployees(data)
@@ -26,18 +29,18 @@ export const Employees = () => {
             <button onClick ={
                 () => history.push("employees/employeeCreateForm")
             }>Add Employee</button>
-            {employees.map(
+            {employees.length > 0 ? employees.map(
                 (employee) => {
                     return (
                         <>
-                            <div>{employee.name}</div><div>{employee.position}</div><div>{employee.salary}</div>
+                            <div>Name: {employee.name}</div><div>Position: {employee.position}</div><div>Salary: ${employee.salary}</div>
                             <button onClick = {
-                                () => history.push(`/employee/${employee.id}/editform`)
+                                () => history.push(`/employees/${employee.id}/editForm`)
                             }>Edit</button>
                         </>
                     )
                 }
-                )}
+                ): ""}
         </>
     )
 }

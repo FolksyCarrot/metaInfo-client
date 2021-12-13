@@ -10,16 +10,17 @@ export const EmployeeCreateForm = () => {
         event.preventDefault()
   
           const employeeObject = {
-              name = employee.name,
-              position = employee.position,
-              salary = employee.salary
+              name: employee.name,
+              position: employee.position,
+              salary: employee.salary
           }
   
   
           const fetchOption = {
               method: "POST",
               headers: {
-                  "Content-Type": "application/json"
+                  "Content-Type": "application/json",
+                  "authorization": `Token ${localStorage.getItem("meta_customer")}`
               },
               body: JSON.stringify(employeeObject)
           }
@@ -46,7 +47,7 @@ export const EmployeeCreateForm = () => {
                         onChange= {
                             (event) => {
                                 const copy = {...employee}
-                                employee.name = event.target.value
+                                copy.name = event.target.value
                                 setEmployee(copy)
                             }
 
@@ -64,7 +65,7 @@ export const EmployeeCreateForm = () => {
                         onChange= {
                             (event) => {
                                 const copy = {...employee}
-                                employee.position = event.target.value
+                                copy.position = event.target.value
                                 setEmployee(copy)
                             }
 
@@ -82,7 +83,7 @@ export const EmployeeCreateForm = () => {
                         onChange= {
                             (event) => {
                                 const copy = {...employee}
-                                employee.salary = event.target.value
+                                copy.salary = event.target.value
                                 setEmployee(copy)
                             }
 
