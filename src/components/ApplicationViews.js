@@ -6,6 +6,7 @@ import { Customers } from "./customers/Customers"
 import { EmployeeCreateForm } from "./employees/EmployeeCreateForm"
 import { EmployeeEditForm } from "./employees/EmployeeEditForm"
 import { Employees } from "./employees/Employees"
+import { ProjectCreateForm } from "./projects/ProjectCreateForm"
 import { ProjectDetails } from "./projects/ProjectDetails"
 import { ProjectEditForm } from "./projects/ProjectEditForm"
 import { Projects } from "./projects/Projects"
@@ -34,6 +35,9 @@ export const ApplicationViews = () => {
             </Route>
             <Route exact path="/projects">
                 <Projects/>  
+            </Route>
+            <Route exact path="/projects/projectCreateForm">
+                <ProjectCreateForm/>  
             </Route>
             <Route exact path="/projects/:projectId(\d+)/details">
                <ProjectDetails />  
