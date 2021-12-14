@@ -48,7 +48,7 @@ export const ProjectEditForm = () => {
         }
         
         return fetch(`http://localhost:8000/projects/${projectId}`, fetchOption)
-            .then(() => history.push("/projects"))
+            .then(() => history.push(`/projects/${projectId}/details`))
     }
 
     return (
