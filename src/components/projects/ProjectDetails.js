@@ -42,7 +42,7 @@ export const ProjectDetails = () => {
             <div>Budget: ${project.budget}</div>
             <div>
                 <h4>Costs</h4>
-            {project.cost.length>0 ? project.cost.map(
+            {project.cost?.length>0 ? project.cost.map(
                 (cost) => {
                     return (
                         <>
@@ -57,10 +57,11 @@ export const ProjectDetails = () => {
                 }):""}
                 <h6>Total Cost: ${project.totalCost}</h6>
                 </div>
-                <div></div>
+                <div>Project Start Date: {project.start}</div>
+                <div>Expected to be completed by: {project.expected_completion}</div>
             <button onClick = {
-                () => history.push(`/projects/${project.id}/details`)
-            }>Details</button>
+                () => history.push(`/projects/${project.id}/editForm`)
+            }>Edit</button>
                         
                     
                
