@@ -26,11 +26,24 @@ export const ProjectDetails = () => {
         }, []
     )
 
+    const deleteCost = (event, id) => {
+        event.preventDefault()
+            return fetch(`http://localhost:8000/costs/${id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Token ${localStorage.getItem("meta_customer")}`
+                }
+            }) 
+            
+        }
+
+
     return (
         <>
             <h2>Project Details</h2>
             <button onClick ={
-                () => history.push("projects/projectCreateForm")
+                () => history.push(`/projects/${projectId}/costs/costCreateForm`)
             }>Add Cost</button>
            
                   
@@ -51,8 +64,12 @@ export const ProjectDetails = () => {
                                     <div>Expense: {cost.label}</div>
                                     <div>Cost: ${cost.cost}</div>
                                     <button onClick = {
-                                        () => history.push(`projects/${projectId}/costs/${cost.id}/editForm`)
+                                        () => history.push(`/projects/${projectId}/costs/${cost.id}/costEditForm`)
                                     }>Edit</button>
+                                    <button onClick = {
+                                        (evt) => {deleteCost(evt, cost.id)
+                                        .then(() => render())}
+                                    }>Delete</button>
                                 </li>
                            </ul>
                         </>
