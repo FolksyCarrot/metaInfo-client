@@ -1,5 +1,7 @@
 import React from "react"
 import { Route } from "react-router-dom"
+import { CostCreateForm } from "./costs/CostCreateForm"
+import { CostEditForm } from "./costs/CostEditForm"
 import { CustomerCreateForm } from "./customers/CustomerCreateForm"
 import { CustomerEditForm } from "./customers/CustomerEditForm"
 import { Customers } from "./customers/Customers"
@@ -44,6 +46,12 @@ export const ApplicationViews = () => {
             </Route>
             <Route exact path="/projects/:projectId(\d+)/editForm">
                 <ProjectEditForm />
+            </Route>
+            <Route exact path="/projects/:projectId(\d+)/costs/costCreateForm">
+                <CostCreateForm />
+            </Route>
+            <Route exact path="/projects/:projectId(\d+)/costs/:costsId(\d+)/costEditForm">
+                <CostEditForm /> 
             </Route>
         </div>
     )
