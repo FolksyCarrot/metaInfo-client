@@ -40,23 +40,21 @@ export const ProjectCreateForm = () => {
     )
 
     const updateEmployee = (evt) => {
-        const copy = {...employees}
-        copy[evt.target.id] = evt.target.value
-        setEmployeeId(copy)
+        
+        setEmployeeId(evt.target.value)
     }
 
     const updateCustomer = (evt) => {
-        const copy = {...customers}
-        copy[evt.target.id] = evt.target.value
-        setCustomerId(copy)
+        
+        setCustomerId(evt.target.value)
     }
 
     const submitForm = (event) => {
         event.preventDefault()
   
           const projectObject = {
-            employee_id: employeeId,
-            customer: parseInt(project.customer.id),
+            employee_id: parseInt(employeeId),
+            customer: parseInt(customerId),
             description: project.description,
             budget: parseInt(project.budget),
             start: project.start,
@@ -88,7 +86,7 @@ export const ProjectCreateForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="description">Employee:</label>
-                    <select  id ="store_id" onChange = {updateEmployee}>
+                    <select onChange = {updateEmployee}>
                     <option>select employee</option>
                     {employees.length > 0?employees?.map(employee => {
                         return( <option value ={employee.id}>{employee.name}</option>)}
@@ -99,7 +97,7 @@ export const ProjectCreateForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="description">Customer:</label>
-                    <select  id ="store_id" onChange = {updateCustomer}>
+                    <select onChange = {updateCustomer}>
                     <option>select employee</option>
                     {customers.length > 0?customers?.map(customer => {
                         return( <option value ={customer.id}>{customer.name}</option>)}
@@ -114,11 +112,11 @@ export const ProjectCreateForm = () => {
                         required= {true} autoFocus={true}
                         type="text"
                         className="form-control-stock"
-                        placeholder="Name"
+                        placeholder="Description"
                         onChange= {
                             (event) => {
                                 const copy = {...project}
-                                copy.name = event.target.value
+                                copy.description = event.target.value
                                 setProject(copy)
                             }
 
@@ -132,11 +130,11 @@ export const ProjectCreateForm = () => {
                         required= {true} autoFocus={true}
                         type="text"
                         className="form-control-stock"
-                        placeholder="Name"
+                        placeholder="Budget"
                         onChange= {
                             (event) => {
                                 const copy = {...project}
-                                copy.name = event.target.value
+                                copy.budget = event.target.value
                                 setProject(copy)
                             }
 
@@ -148,13 +146,13 @@ export const ProjectCreateForm = () => {
                     <label htmlFor="description">Start Date:</label>
                     <input
                         required= {true} autoFocus={true}
-                        type="text"
+                        type="date"
                         className="form-control-stock"
-                        placeholder="Name"
+                        placeholder="Start Date"
                         onChange= {
                             (event) => {
                                 const copy = {...project}
-                                copy.name = event.target.value
+                                copy.start = event.target.value
                                 setProject(copy)
                             }
 
@@ -166,13 +164,13 @@ export const ProjectCreateForm = () => {
                     <label htmlFor="description">Expected Completion Date:</label>
                     <input
                         required= {true} autoFocus={true}
-                        type="text"
+                        type="date"
                         className="form-control-stock"
-                        placeholder="Name"
+                        placeholder="Expected Completion"
                         onChange= {
                             (event) => {
                                 const copy = {...project}
-                                copy.name = event.target.value
+                                copy.expected_completion = event.target.value
                                 setProject(copy)
                             }
 

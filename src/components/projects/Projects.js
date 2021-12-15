@@ -37,7 +37,7 @@ export const Projects = () => {
                             {console.log(project)}
                             <div>Project is for: {project.customer.name}</div>
                             <div>Project Description: {project.description}</div>
-                            <div>The project has been completed: {project.is_completed===true? "Yes": "No"}</div>
+                            <div>Has the project has been completed?: {project.is_completed===true? "Yes": "No"}</div>
                             <button onClick = {
                                 () => history.push(`/projects/${project.id}/details`)
                             }>Details</button>

@@ -38,7 +38,7 @@ export const ProjectDetails = () => {
             <div>Project is for: {project.customer?.name}</div>
             <div>Project Description: {project.description}</div>
             <div>Assigned to: {project.employee?.name}</div>
-            <div>The project has been completed: {project.is_completed===true? "Yes": "No"}</div>
+            <div>Has the project has been completed?: {project.is_completed===true? "Yes": "No"}</div>
             <div>Budget: ${project.budget}</div>
             <div>
                 <h4>Costs</h4>
@@ -50,6 +50,9 @@ export const ProjectDetails = () => {
                                 <li>
                                     <div>Expense: {cost.label}</div>
                                     <div>Cost: ${cost.cost}</div>
+                                    <button onClick = {
+                                        () => history.push(`projects/${projectId}/costs/${cost.id}/editForm`)
+                                    }>Edit</button>
                                 </li>
                            </ul>
                         </>
