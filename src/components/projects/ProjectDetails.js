@@ -53,6 +53,7 @@ export const ProjectDetails = () => {
                                     <button onClick = {
                                         () => history.push(`projects/${projectId}/costs/${cost.id}/editForm`)
                                     }>Edit</button>
+                                    <button>Delete</button>
                                 </li>
                            </ul>
                         </>
