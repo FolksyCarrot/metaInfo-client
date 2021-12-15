@@ -43,7 +43,7 @@ export const EmployeeCreateForm = () => {
                         required= {true} autoFocus={true}
                         type="text"
                         className="form-control-stock"
-                        placeholder="Name"
+                        
                         onChange= {
                             (event) => {
                                 const copy = {...employee}
@@ -61,7 +61,7 @@ export const EmployeeCreateForm = () => {
                         required= {true} autoFocus={true}
                         type="text"
                         className="form-control-stock"
-                        placeholder="Position"
+                        
                         onChange= {
                             (event) => {
                                 const copy = {...employee}
@@ -79,7 +79,7 @@ export const EmployeeCreateForm = () => {
                         required= {true} autoFocus={true}
                         type="text"
                         className="form-control-stock"
-                        placeholder="salary"
+                        
                         onChange= {
                             (event) => {
                                 const copy = {...employee}

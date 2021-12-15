@@ -41,7 +41,6 @@ export const CustomerCreateForm = () => {
                         required= {true} autoFocus={true}
                         type="text"
                         className="form-control-stock"
-                        placeholder="Name"
                         onChange= {
                             (event) => {
                                 const copy = {...customer}

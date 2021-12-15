@@ -45,7 +45,6 @@ export const CostCreateForm = () => {
                         required= {true} autoFocus={true}
                         type="text"
                         className="form-control-stock"
-                        placeholder="label"
                         onChange= {
                             (event) => {
                                 const copy = {...costs}
@@ -63,7 +62,6 @@ export const CostCreateForm = () => {
                         required= {true} autoFocus={true}
                         type="text"
                         className="form-control-stock"
-                        placeholder="Cost"
                         onChange= {
                             (event) => {
                                 const copy = {...costs}
