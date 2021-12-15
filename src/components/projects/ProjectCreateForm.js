@@ -112,7 +112,6 @@ export const ProjectCreateForm = () => {
                         required= {true} autoFocus={true}
                         type="text"
                         className="form-control-stock"
-                        placeholder="Description"
                         onChange= {
                             (event) => {
                                 const copy = {...project}
@@ -130,7 +129,6 @@ export const ProjectCreateForm = () => {
                         required= {true} autoFocus={true}
                         type="text"
                         className="form-control-stock"
-                        placeholder="Budget"
                         onChange= {
                             (event) => {
                                 const copy = {...project}
@@ -148,7 +146,6 @@ export const ProjectCreateForm = () => {
                         required= {true} autoFocus={true}
                         type="date"
                         className="form-control-stock"
-                        placeholder="Start Date"
                         onChange= {
                             (event) => {
                                 const copy = {...project}
@@ -166,7 +163,6 @@ export const ProjectCreateForm = () => {
                         required= {true} autoFocus={true}
                         type="date"
                         className="form-control-stock"
-                        placeholder="Expected Completion"
                         onChange= {
                             (event) => {
                                 const copy = {...project}
