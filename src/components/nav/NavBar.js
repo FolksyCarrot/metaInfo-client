@@ -19,7 +19,7 @@ export const NavBar = () => {
                 history.push('/customers')
             }else if(selected === 'projects'){
                 history.push('/projects')
-            }else if(selected === 'Log-Out'){
+            }else if(selected === 'logOut'){
                 localStorage.clear()
                 
             }
@@ -61,7 +61,7 @@ export const NavBar = () => {
                 Projects
             </NavText>
         </NavItem>
-        <NavItem eventKey="Log-Out">
+        <NavItem eventKey="logOut">
             <NavIcon>
             <span class="material-icons" style={{ fontSize: '1.75em' }}>logout</span>
             </NavIcon>
