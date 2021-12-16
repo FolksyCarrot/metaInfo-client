@@ -25,7 +25,7 @@ export const EmployeeCreateForm = () => {
               body: JSON.stringify(employeeObject)
           }
           
-          return fetch("http://localhost:8000/employees", fetchOption)
+          return fetch("https://meta-info-server.herokuapp.com/employees", fetchOption)
               .then(() => history.push("/employees"))
       }
 

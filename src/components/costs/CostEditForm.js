@@ -11,7 +11,7 @@ export const CostEditForm = () => {
     const {projectId} = useParams()
 
     const render = () => {
-        return fetch(`http://localhost:8000/costs/${costsId}`,
+        return fetch(`https://meta-info-server.herokuapp.com/costs/${costsId}`,
         {headers: { "Authorization": `Token ${localStorage.getItem("meta_customer")}`}})
             .then(res => res.json())
             .then((data) => {
@@ -44,7 +44,7 @@ export const CostEditForm = () => {
             body: JSON.stringify(costsObject)
         }
         
-        return fetch(`http://localhost:8000/costs/${costsId}`, fetchOption)
+        return fetch(`https://meta-info-server.herokuapp.com/costs/${costsId}`, fetchOption)
             .then(() => history.push(`/projects/${projectId}/details`))
     }
 

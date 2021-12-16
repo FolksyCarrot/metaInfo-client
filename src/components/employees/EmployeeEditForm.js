@@ -10,7 +10,7 @@ export const EmployeeEditForm = () => {
     const {employeeId} = useParams()
 
     const render = () => {
-        return fetch(`http://localhost:8000/employees/${employeeId}`,
+        return fetch(`https://meta-info-server.herokuapp.com/employees/${employeeId}`,
         {headers: { "Authorization": `Token ${localStorage.getItem("meta_customer")}`}})
             .then(res => res.json())
             .then((data) => {
@@ -43,7 +43,7 @@ export const EmployeeEditForm = () => {
             body: JSON.stringify(employeeObject)
         }
         
-        return fetch(`http://localhost:8000/employees/${employeeId}`, fetchOption)
+        return fetch(`https://meta-info-server.herokuapp.com/employees/${employeeId}`, fetchOption)
             .then(() => history.push("/employees"))
     }
 

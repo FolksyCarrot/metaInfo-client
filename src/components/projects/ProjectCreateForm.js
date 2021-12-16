@@ -11,7 +11,7 @@ export const ProjectCreateForm = () => {
     const history = useHistory()
 
     const renderEmployee = () => {
-        return fetch("http://localhost:8000/employees",
+        return fetch("https://meta-info-server.herokuapp.com/employees",
         {headers: { "Authorization": `Token ${localStorage.getItem("meta_customer")}`}
 
         })
@@ -22,7 +22,7 @@ export const ProjectCreateForm = () => {
     }
 
     const renderCustomers = () => {
-        return fetch("http://localhost:8000/customers",
+        return fetch("https://meta-info-server.herokuapp.com/customers",
         {headers: { "Authorization": `Token ${localStorage.getItem("meta_customer")}`}
 
         })
@@ -72,7 +72,7 @@ export const ProjectCreateForm = () => {
               body: JSON.stringify(projectObject)
           }
           
-          return fetch("http://localhost:8000/projects", fetchOption)
+          return fetch("https://meta-info-server.herokuapp.com/projects", fetchOption)
               .then(() => history.push("/projects"))
       }
 

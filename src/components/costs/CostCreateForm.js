@@ -27,7 +27,7 @@ export const CostCreateForm = () => {
               body: JSON.stringify(costsObject)
           }
           
-          return fetch("http://localhost:8000/costs", fetchOption)
+          return fetch("https://meta-info-server.herokuapp.com/costs", fetchOption)
               .then(() => history.push(`/projects/${projectId}/details`))
       }
 
