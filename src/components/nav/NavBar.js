@@ -19,6 +19,9 @@ export const NavBar = () => {
                 history.push('/customers')
             }else if(selected === 'projects'){
                 history.push('/projects')
+            }else if(selected === log-out){
+                localStorage.clear()
+                
             }
         }}
 >
@@ -58,13 +61,11 @@ export const NavBar = () => {
                 Projects
             </NavText>
         </NavItem>
-        <NavItem eventKey="Log Out">
+        <NavItem eventKey="Log-Out">
             <NavIcon>
             <span class="material-icons" style={{ fontSize: '1.75em' }}>logout</span>
             </NavIcon>
-            <NavText onClick = {
-                () => localStorage.clear()
-            }>
+            <NavText >
                 Log Out
             </NavText>
         </NavItem>
