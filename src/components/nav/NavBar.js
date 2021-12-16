@@ -58,6 +58,16 @@ export const NavBar = () => {
                 Projects
             </NavText>
         </NavItem>
+        <NavItem eventKey="Log Out">
+            <NavIcon>
+            <span class="material-icons" style={{ fontSize: '1.75em' }}>logout</span>
+            </NavIcon>
+            <NavText onClick = {
+                () => localStorage.clear()
+            }>
+                Log Out
+            </NavText>
+        </NavItem>
         <NavItem eventKey="charts">
             <NavIcon>
                 <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
@@ -75,6 +85,7 @@ export const NavBar = () => {
                     Bar Chart
                 </NavText>
             </NavItem>
+            
         </NavItem>
     </SideNav.Nav>
 </SideNav>
