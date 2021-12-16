@@ -9,7 +9,7 @@ export const ProjectEditForm = () => {
     const {projectId} = useParams()
 
     const render = () => {
-        return fetch(`http://localhost:8000/projects/${projectId}`,
+        return fetch(`https://meta-info-server.herokuapp.com/projects/${projectId}`,
         {headers: { "Authorization": `Token ${localStorage.getItem("meta_customer")}`}})
             .then(res => res.json())
             .then((data) => {
@@ -47,7 +47,7 @@ export const ProjectEditForm = () => {
             body: JSON.stringify(projectObject)
         }
         
-        return fetch(`http://localhost:8000/projects/${projectId}`, fetchOption)
+        return fetch(`https://meta-info-server.herokuapp.com/projects/${projectId}`, fetchOption)
             .then(() => history.push(`/projects/${projectId}/details`))
     }
 

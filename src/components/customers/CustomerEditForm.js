@@ -10,7 +10,7 @@ export const CustomerEditForm = () => {
     const {customerId} = useParams()
 
     const render = () => {
-        return fetch(`http://localhost:8000/customers/${customerId}`,
+        return fetch(`https://meta-info-server.herokuapp.com/customers/${customerId}`,
         {headers: { "Authorization": `Token ${localStorage.getItem("meta_customer")}`}})
             .then(res => res.json())
             .then((data) => {
@@ -41,7 +41,7 @@ export const CustomerEditForm = () => {
             body: JSON.stringify(customerObject)
         }
         
-        return fetch(`http://localhost:8000/customers/${customerId}`, fetchOption)
+        return fetch(`https://meta-info-server.herokuapp.com/customers/${customerId}`, fetchOption)
             .then(() => history.push("/customers"))
     }
 

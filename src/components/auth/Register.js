@@ -13,7 +13,7 @@ export const Register = (props) => {
             username: manager.username,
             password: manager.password
         }
-        return fetch(`http://localhost:8000/login`,
+        return fetch(`https://meta-info-server.herokuapp.com/login`,
         {
             method: "POST",
             headers: {
@@ -29,7 +29,7 @@ export const Register = (props) => {
         existingUserCheck()
             .then((userExists) => {
                 if (!userExists) {
-                    fetch("http://localhost:8000/register", {
+                    fetch("https://meta-info-server.herokuapp.com/register", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
@@ -51,7 +51,7 @@ export const Register = (props) => {
     }
 
     const storeRender = () => {
-        fetch("http://localhost:8000/stores")
+        fetch("https://meta-info-server.herokuapp.com/stores")
         .then(res => res.json())
         .then(data => setStores(data))
     }

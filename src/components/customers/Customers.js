@@ -7,7 +7,7 @@ export const Customers = () => {
     const history = useHistory()
 
     const render = () => {
-        return fetch("http://localhost:8000/customers",
+        return fetch("https://meta-info-server.herokuapp.com/customers",
         {headers: { "Authorization": `Token ${localStorage.getItem("meta_customer")}`}
 
         })

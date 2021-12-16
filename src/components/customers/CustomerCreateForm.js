@@ -23,7 +23,7 @@ export const CustomerCreateForm = () => {
               body: JSON.stringify(customerObject)
           }
           
-          return fetch("http://localhost:8000/customers", fetchOption)
+          return fetch("https://meta-info-server.herokuapp.com/customers", fetchOption)
               .then(() => history.push("/customers"))
       }
 

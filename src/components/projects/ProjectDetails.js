@@ -10,7 +10,7 @@ export const ProjectDetails = () => {
     const {projectId} = useParams()
 
     const render = () => {
-        return fetch(`http://localhost:8000/projects/${projectId}`,
+        return fetch(`https://meta-info-server.herokuapp.com/projects/${projectId}`,
         {headers: { "Authorization": `Token ${localStorage.getItem("meta_customer")}`}
 
         })
@@ -28,7 +28,7 @@ export const ProjectDetails = () => {
 
     const deleteCost = (event, id) => {
         event.preventDefault()
-            return fetch(`http://localhost:8000/costs/${id}`, {
+            return fetch(`https://meta-info-server.herokuapp.com/costs/${id}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
