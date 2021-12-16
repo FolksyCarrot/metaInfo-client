@@ -19,7 +19,7 @@ export const NavBar = () => {
                 history.push('/customers')
             }else if(selected === 'projects'){
                 history.push('/projects')
-            }else if(selected === log-out){
+            }else if(selected === 'log-out'){
                 localStorage.clear()
                 
             }
