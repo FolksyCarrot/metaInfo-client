@@ -9,7 +9,7 @@ export const NavBar = () => {
     const history = useHistory()
     return(
         <>
-            <SideNav
+            <SideNav className="sideBar"
         onSelect={(selected) => {
             if(selected === 'home'){
                 history.push("/home")
@@ -55,7 +55,7 @@ export const NavBar = () => {
         </NavItem>
         <NavItem eventKey="projects">
             <NavIcon>
-            <span class="material-icons" style={{ fontSize: '1.75em' }}>business</span>
+                <span class="material-icons" style={{ fontSize: '1.75em' }}>business</span>
             </NavIcon>
             <NavText>
                 Projects
@@ -63,7 +63,7 @@ export const NavBar = () => {
         </NavItem>
         <NavItem eventKey="logOut">
             <NavIcon>
-            <span class="material-icons" style={{ fontSize: '1.75em' }}>logout</span>
+                <span class="material-icons" style={{ fontSize: '1.75em' }}>logout</span>
             </NavIcon>
             <NavText >
                 Log Out
