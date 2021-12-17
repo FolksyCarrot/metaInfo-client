@@ -40,7 +40,7 @@ export const Register = (props) => {
                         .then(createdUser => {
                             if (createdUser.hasOwnProperty("token")) {
                                 localStorage.setItem("meta_customer", createdUser.token)
-                                history.push("/")
+                                history.push("/home")
                             }
                         })
                 }
@@ -87,19 +87,19 @@ export const Register = (props) => {
                 </fieldset>
                 <fieldset>
                     <label htmlFor="email"> Email address </label>
-                    <input onChange={updateManager} type="email" id="email" className="form-control" placeholder="Email address" required />
+                    <input onChange={updateManager} type="email" id="email" className="form-control"  required />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="password"> Password </label>
-                    <input onChange={updateManager} type="text" id="password" className="form-control" placeholder="password" required />
+                    <input onChange={updateManager} type="text" id="password" className="form-control"  required />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="first_name"> First Name </label>
-                    <input onChange={updateManager} type="text" id="first_name" className="form-control" placeholder="password" required />
+                    <input onChange={updateManager} type="text" id="first_name" className="form-control"  required />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="last_name"> Last Name </label>
-                    <input onChange={updateManager} type="text" id="last_name" className="form-control" placeholder="password" required />
+                    <input onChange={updateManager} type="text" id="last_name" className="form-control"  required />
                 </fieldset>
                 <select  id ="store_id" onChange = {updateManager}>
                     <option>select company</option>

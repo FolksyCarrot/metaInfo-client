@@ -52,7 +52,7 @@ export const Login = () => {
                         <input type="text"
                             onChange={evt => setUsername(evt.target.value)}
                             className="form-control"
-                            placeholder="User name"
+                            
                             required autoFocus />
                     </fieldset>
                     <fieldset>
@@ -60,7 +60,7 @@ export const Login = () => {
                         <input type="text"
                             onChange={evt => set(evt.target.value)}
                             className="form-control"
-                            placeholder="Password"
+                            
                             required autoFocus />
                     </fieldset>
                     <fieldset>
