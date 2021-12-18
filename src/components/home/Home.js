@@ -11,11 +11,14 @@ import "./Home.css"
 
 export const Home = () => {
     const[projects, setProjects] = useState([])
+    const[projectId, setProjectId] = useState([])
     const [projectName, setProjectName] = useState([])
     const [budgets, setBudgets] = useState([])
     const [totalCost, setTotalCost] = useState([])
     const[revenue, setRevenue] = useState([])
     const [test, setTest] = useState(-1)
+    //setTest state is originally (-1) so that there is no error when an account is initially created because there will be no projects available. The value of test is changed in the buttons on the charts below. The first one, sets test equal to the value of the project.id. the reset button resets test back to 0. depending on the value of test, the chart renders.
+
     const render = () => {
         return fetch("https://meta-info-server.herokuapp.com/projects",
         {headers: { "Authorization": `Token ${localStorage.getItem("meta_customer")}`}
@@ -23,6 +26,8 @@ export const Home = () => {
         })
             .then(res => res.json())
             .then((data) => {
+                //intially, we set the projects, then we create a state for each instance of the property we wish to use. Doing this because ternary statements of .map did not yield results.
+
                 setProjects(data)
                 let test = data.map( (project) => project.budget)
                 setBudgets(test)
@@ -30,7 +35,9 @@ export const Home = () => {
                 setTotalCost(cost)
                 let profit = data.map( (money) => (money.budget - money.totalCost))
                 setRevenue(profit)
-                console.log(profit)
+                let id = data.map( (project) => project.id )
+                setProjectId(id)
+                
                 
             })
     }
@@ -41,20 +48,23 @@ export const Home = () => {
         })
             .then(res => res.json())
             .then((data) => {
-                
-               setBudgets([data.budget])
-               setTotalCost([data.totalCost])
-               setRevenue([data.budget-data.totalCost])
-                
+                //Same as above, but now we are re-setting the same variables to house the information of the selected projected.
+
+                setBudgets([data.budget])
+                setTotalCost([data.totalCost])
+                setRevenue([data.budget-data.totalCost])
+                setProjectId([data.id])
             })
     }
 
+    //this is the initial render
     useEffect(
         () => {
             render()
         }, []
     )
 
+    //second render depending on what project.id is selected, that value is then passed in the singleRender argument above. Watches for state change of test, to force a re-render.
     useEffect(
         () => {
             if(test>0){
@@ -66,12 +76,13 @@ export const Home = () => {
         }, [test]
     )
     
-
+    
     return(
         <>
+            
             <Line id = "line-chart"
                 data = {{
-                    labels: ['2021', '2022', '2023', '2024', '2025', '2026'],
+                    labels: [projectId],
                 datasets: [{
                     label: 'cost of projects',
                     data: totalCost,
@@ -158,10 +169,8 @@ export const Home = () => {
                 <tr>
                     <th>Project #</th>
                     <th>Customer</th>
-                    <th>Passing TDs</th>
-                    <th>Completion %</th>
-                    <th>Y/A</th>
-                    <th>INTs</th>
+                    <th>Description</th>
+                    
                 </tr>
 
             {projects.map (
