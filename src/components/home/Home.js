@@ -1,4 +1,4 @@
-import { Line} from "react-chartjs-2";
+import { Bar} from "react-chartjs-2";
 import React, { useEffect, useState} from "react"
 import { useHistory } from "react-router-dom"
 import Chart from 'chart.js/auto';
@@ -10,6 +10,7 @@ import "./Home.css"
 
 
 export const Home = () => {
+    
     const[projects, setProjects] = useState([])
     const[projectId, setProjectId] = useState([])
     const [projectName, setProjectName] = useState([])
@@ -80,9 +81,9 @@ export const Home = () => {
     return(
         <>
             
-            <Line id = "line-chart"
+            <Bar id = "line-chart"
                 data = {{
-                    labels: [projectId],
+                    labels: [`${projectId}`],
                 datasets: [{
                     label: 'cost of projects',
                     data: totalCost,
@@ -147,7 +148,7 @@ export const Home = () => {
                     borderWidth: 1
                 }
                 ], 
-                options: {
+                option: {
                     }
     
                 }}
