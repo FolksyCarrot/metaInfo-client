@@ -83,7 +83,7 @@ export const Home = () => {
             
             <Bar id = "line-chart"
                 data = {{
-                    labels: [`${projectId}`],
+                    labels: projectId,
                 datasets: [{
                     label: 'cost of projects',
                     data: totalCost,
