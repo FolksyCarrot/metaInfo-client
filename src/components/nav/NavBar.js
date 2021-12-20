@@ -9,7 +9,7 @@ export const NavBar = () => {
     const history = useHistory()
     return(
         <>
-            <SideNav
+            <SideNav className="sideBar"
         onSelect={(selected) => {
             if(selected === 'home'){
                 history.push("/home")
@@ -19,6 +19,9 @@ export const NavBar = () => {
                 history.push('/customers')
             }else if(selected === 'projects'){
                 history.push('/projects')
+            }else if(selected === 'logOut'){
+                localStorage.clear()
+                history.push('/login')
             }
         }}
 >
@@ -52,10 +55,18 @@ export const NavBar = () => {
         </NavItem>
         <NavItem eventKey="projects">
             <NavIcon>
-            <span class="material-icons" style={{ fontSize: '1.75em' }}>business</span>
+                <span class="material-icons" style={{ fontSize: '1.75em' }}>business</span>
             </NavIcon>
             <NavText>
                 Projects
+            </NavText>
+        </NavItem>
+        <NavItem eventKey="logOut">
+            <NavIcon>
+                <span class="material-icons" style={{ fontSize: '1.75em' }}>logout</span>
+            </NavIcon>
+            <NavText >
+                Log Out
             </NavText>
         </NavItem>
         <NavItem eventKey="charts">
@@ -75,6 +86,7 @@ export const NavBar = () => {
                     Bar Chart
                 </NavText>
             </NavItem>
+            
         </NavItem>
     </SideNav.Nav>
 </SideNav>

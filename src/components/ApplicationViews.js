@@ -8,6 +8,7 @@ import { Customers } from "./customers/Customers"
 import { EmployeeCreateForm } from "./employees/EmployeeCreateForm"
 import { EmployeeEditForm } from "./employees/EmployeeEditForm"
 import { Employees } from "./employees/Employees"
+import { Home } from "./home/Home"
 import { ProjectCreateForm } from "./projects/ProjectCreateForm"
 import { ProjectDetails } from "./projects/ProjectDetails"
 import { ProjectEditForm } from "./projects/ProjectEditForm"
@@ -17,6 +18,9 @@ import { Projects } from "./projects/Projects"
 export const ApplicationViews = () => {
     return(
         <div id="main--container">
+            <Route exact path="/home">
+                <Home />
+            </Route>
             <Route exact path="/employees">
                 <Employees />
             </Route>
