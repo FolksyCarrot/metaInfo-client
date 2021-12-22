@@ -7,3 +7,19 @@
 body {
     background: rgb(56,56,56)
 }
+
+.chart-div {
+    display:flex;
+}
+
+th, tr {
+    color: rgb(53, 182, 169)
+}
+
+.chart-table {
+    padding-left: 10px;
+}
+
+.reset-button {
+    margin-left: 10px;
+}

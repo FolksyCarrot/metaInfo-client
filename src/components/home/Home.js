@@ -1,4 +1,4 @@
-import { Bar} from "react-chartjs-2";
+import { Bar, Doughnut} from "react-chartjs-2";
 import React, { useEffect, useState} from "react"
 import { useHistory } from "react-router-dom"
 import Chart from 'chart.js/auto';
@@ -80,7 +80,8 @@ export const Home = () => {
     
     return(
         <>
-            
+            <div class ="chart-div">
+
             <Bar id = "line-chart"
                 data = {{
                     labels: projectId,
@@ -155,18 +156,95 @@ export const Home = () => {
                 
             />
 
+            <Doughnut id = "line-chart"
+                data = {{
+                    labels: projectId,
+                datasets: [{
+                    label: 'cost of projects',
+                    data: totalCost,
+                    backgroundColor: [
+                        'rgba(217, 30, 24, 0.2)',
+                        'rgba(217, 30, 24, 0.2)',
+                        'rgba(217, 30, 24, 0.2)',
+                        'rgba(217, 30, 24, 0.2)',
+                        'rgba(217, 30, 24, 0.2)',
+                        'rgba(217, 30, 24, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(217, 30, 24, 1)',
+                        'rgba(217, 30, 24, 1)',
+                        'rgba(217, 30, 24, 1)',
+                        'rgba(217, 30, 24, 1)',
+                        'rgba(217, 30, 24, 1)',
+                        'rgba(217, 30, 24, 1)'
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: 'budget of projects',
+                    data: budgets,
+                    backgroundColor: [
+                        'rgba(45, 85, 255, 0.2)',
+                        'rgba(45, 85, 255, 0.2)',
+                        'rgba(45, 85, 255, 0.2)',
+                        'rgba(45, 85, 255, 0.2)',
+                        'rgba(45, 85, 255, 0.2)',
+                        'rgba(45, 85, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(45, 85, 255, 1)',
+                        'rgba(45, 85, 255, 1)',
+                        'rgba(45, 85, 255, 1)',
+                        'rgba(45, 85, 255, 1)',
+                        'rgba(45, 85, 255, 1)',
+                        'rgba(45, 85, 255, 1)'
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Total Revenue',
+                    data: revenue,
+                    backgroundColor: [
+                        'rgba(147, 250, 165, 0.2)',
+                        'rgba(147, 250, 165, 0.2)',
+                        'rgba(147, 250, 165, 0.2)',
+                        'rgba(147, 250, 165, 0.2)',
+                        'rgba(147, 250, 165, 0.2)',
+                        'rgba(147, 250, 165, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(147, 250, 165, 1)',
+                        'rgba(147, 250, 165, 1)',
+                        'rgba(147, 250, 165, 1)',
+                        'rgba(147, 250, 165, 1)',
+                        'rgba(147, 250, 165, 1)',
+                        'rgba(147, 250, 165, 1)'
+                    ],
+                    borderWidth: 1
+                }
+                ], 
+                option: {
+                    }
+    
+                }}
+                
+            />
+
+
+            </div>
 
 
 
 
-            <button onClick = {
+
+            <button class="reset-button" onClick = {
                 () => {
                     setTest(0)
                 }
             }>Reset</button>
                 
 
-            <table>
+            <table class="chart-table">
                 <tr>
                     <th>Project #</th>
                     <th>Customer</th>
