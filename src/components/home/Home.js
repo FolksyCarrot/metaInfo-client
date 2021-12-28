@@ -17,8 +17,15 @@ export const Home = () => {
     const [budgets, setBudgets] = useState([])
     const [totalCost, setTotalCost] = useState([])
     const[revenue, setRevenue] = useState([])
+    const[projectCostName, setProjectCostName] = useState([])
+    const [projectCost, setProjectCost] = useState([])
+    const[chartColor, setChartColor] = useState([])
     const [test, setTest] = useState(-1)
     //setTest state is originally (-1) so that there is no error when an account is initially created because there will be no projects available. The value of test is changed in the buttons on the charts below. The first one, sets test equal to the value of the project.id. the reset button resets test back to 0. depending on the value of test, the chart renders.
+
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+      }
 
     const render = () => {
         return fetch("https://meta-info-server.herokuapp.com/projects",
@@ -39,7 +46,6 @@ export const Home = () => {
                 let id = data.map( (project) => project.id )
                 setProjectId(id)
                 
-                
             })
     }
     const singleRender = (id) => {
@@ -50,11 +56,25 @@ export const Home = () => {
             .then(res => res.json())
             .then((data) => {
                 //Same as above, but now we are re-setting the same variables to house the information of the selected projected.
+                
 
                 setBudgets([data.budget])
                 setTotalCost([data.totalCost])
                 setRevenue([data.budget-data.totalCost])
                 setProjectId([data.id])
+                if (data.cost.length> 1) {
+                   let arr =  data?.cost?.map( (data) => data.label)
+                   setProjectCostName(arr)
+                } else if (data.cost.length === 1) {
+                    setProjectCostName([data.cost[0].label])
+                }
+                setProjectCost(data.cost.map( (data) => data.cost))
+                let colors = []
+                for(let i = 0; i<data.cost.length; i ++){
+                    colors.push(`rgb(${getRandomInt(250)}, ${getRandomInt(250)}, ${getRandomInt(250)})`)
+                }
+                setChartColor(colors)
+                console.log(data)
             })
     }
 
@@ -70,6 +90,8 @@ export const Home = () => {
         () => {
             if(test>0){
                 singleRender(test) 
+                .then(console.log(projectCostName))
+                
             }else if(test === 0){
                 render()
             }
@@ -158,18 +180,11 @@ export const Home = () => {
 
             <Doughnut id = "line-chart"
                 data = {{
-                    labels: projectId,
+                    labels: projectCostName,
                 datasets: [{
                     label: 'cost of projects',
-                    data: totalCost,
-                    backgroundColor: [
-                        'rgba(217, 30, 24, 0.2)',
-                        'rgba(217, 30, 24, 0.2)',
-                        'rgba(217, 30, 24, 0.2)',
-                        'rgba(217, 30, 24, 0.2)',
-                        'rgba(217, 30, 24, 0.2)',
-                        'rgba(217, 30, 24, 0.2)'
-                    ],
+                    data: projectCost,
+                    backgroundColor: chartColor,
                     borderColor: [
                         'rgba(217, 30, 24, 1)',
                         'rgba(217, 30, 24, 1)',
@@ -177,48 +192,6 @@ export const Home = () => {
                         'rgba(217, 30, 24, 1)',
                         'rgba(217, 30, 24, 1)',
                         'rgba(217, 30, 24, 1)'
-                    ],
-                    borderWidth: 1
-                },
-                {
-                    label: 'budget of projects',
-                    data: budgets,
-                    backgroundColor: [
-                        'rgba(45, 85, 255, 0.2)',
-                        'rgba(45, 85, 255, 0.2)',
-                        'rgba(45, 85, 255, 0.2)',
-                        'rgba(45, 85, 255, 0.2)',
-                        'rgba(45, 85, 255, 0.2)',
-                        'rgba(45, 85, 255, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(45, 85, 255, 1)',
-                        'rgba(45, 85, 255, 1)',
-                        'rgba(45, 85, 255, 1)',
-                        'rgba(45, 85, 255, 1)',
-                        'rgba(45, 85, 255, 1)',
-                        'rgba(45, 85, 255, 1)'
-                    ],
-                    borderWidth: 1
-                },
-                {
-                    label: 'Total Revenue',
-                    data: revenue,
-                    backgroundColor: [
-                        'rgba(147, 250, 165, 0.2)',
-                        'rgba(147, 250, 165, 0.2)',
-                        'rgba(147, 250, 165, 0.2)',
-                        'rgba(147, 250, 165, 0.2)',
-                        'rgba(147, 250, 165, 0.2)',
-                        'rgba(147, 250, 165, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(147, 250, 165, 1)',
-                        'rgba(147, 250, 165, 1)',
-                        'rgba(147, 250, 165, 1)',
-                        'rgba(147, 250, 165, 1)',
-                        'rgba(147, 250, 165, 1)',
-                        'rgba(147, 250, 165, 1)'
                     ],
                     borderWidth: 1
                 }
