@@ -27,6 +27,18 @@ export const Home = () => {
         return Math.floor(Math.random() * max);
       }
 
+    function findLargestBudget(array) {
+        let largest = 0
+        for (let i=0; i<=largest;i++){
+            if (array[i]>largest) {
+                //var largest=array[i];
+                largest=array[i];
+            }
+            
+        }
+        return largest
+    }
+
     const render = () => {
         return fetch("https://meta-info-server.herokuapp.com/projects",
         {headers: { "Authorization": `Token ${localStorage.getItem("meta_customer")}`}
@@ -34,7 +46,7 @@ export const Home = () => {
         })
             .then(res => res.json())
             .then((data) => {
-                //intially, we set the projects, then we create a state for each instance of the property we wish to use. Doing this because ternary statements of .map did not yield results.
+                //initially, we set the projects, then we create a state for each instance of the property we wish to use. Doing this because ternary statements of .map did not yield results.
 
                 setProjects(data)
                 let test = data.map( (project) => project.budget)
@@ -45,6 +57,9 @@ export const Home = () => {
                 setRevenue(profit)
                 let id = data.map( (project) => project.id )
                 setProjectId(id)
+
+                console.log(budgets)
+                console.log({"Largest Budget":findLargestBudget(budgets)})
                 
             })
     }
