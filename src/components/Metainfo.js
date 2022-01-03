@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { ApplicationViews } from "./ApplicationViews";
@@ -8,7 +9,7 @@ import { NavBar } from "./nav/NavBar";
 
 
 export const MetaInfo = () => (
-  <>
+  <> {document.readyState === 'complete' ? <>
     <Route
       render={() => {
         if (localStorage.getItem("meta_customer")) {
@@ -30,5 +31,6 @@ export const MetaInfo = () => (
     <Route path="/register">
       <Register />
     </Route>
+    </> : <div><CircularProgress />...Loading your page</div>}
   </>
 );

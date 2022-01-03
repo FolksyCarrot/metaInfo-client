@@ -3,6 +3,7 @@ import React, { useEffect, useState} from "react"
 import { useHistory } from "react-router-dom"
 import Chart from 'chart.js/auto';
 import "./Home.css"
+import { Button } from "@mui/material";
 
 
 
@@ -20,6 +21,7 @@ export const Home = () => {
     const[projectCostName, setProjectCostName] = useState([])
     const [projectCost, setProjectCost] = useState([])
     const[chartColor, setChartColor] = useState([])
+    const [largestBudget, setLargestBudget] = useState()
     const [test, setTest] = useState(-1)
     //setTest state is originally (-1) so that there is no error when an account is initially created because there will be no projects available. The value of test is changed in the buttons on the charts below. The first one, sets test equal to the value of the project.id. the reset button resets test back to 0. depending on the value of test, the chart renders.
 
@@ -28,15 +30,19 @@ export const Home = () => {
       }
 
     function findLargestBudget(array) {
+        
         let largest = 0
-        for (let i=0; i<=largest;i++){
-            if (array[i]>largest) {
+        let companyName = ""
+        for (let i=0; i<array.length;i++){
+            if (array[i].budget>largest) {
                 //var largest=array[i];
-                largest=array[i];
+                largest=array[i].budget;
+                companyName = array[i].customer.name
             }
             
         }
-        return largest
+        setLargestBudget({Budget: largest,
+                            CompanyName: companyName})
     }
 
     const render = () => {
@@ -57,9 +63,10 @@ export const Home = () => {
                 setRevenue(profit)
                 let id = data.map( (project) => project.id )
                 setProjectId(id)
+                findLargestBudget(data)
 
-                console.log(budgets)
-                console.log({"Largest Budget":findLargestBudget(budgets)})
+                console.log({"budget object": data})
+                
                 
             })
     }
@@ -117,6 +124,7 @@ export const Home = () => {
     
     return(
         <>
+        {projects.length> 0 ? <>
             <div class ="chart-div">
 
             <Bar id = "line-chart"
@@ -192,7 +200,7 @@ export const Home = () => {
                 }}
                 
             />
-
+            {test>0 ? 
             <Doughnut id = "line-chart"
                 data = {{
                     labels: projectCostName,
@@ -217,19 +225,22 @@ export const Home = () => {
                 }}
                 
             />
+            : ""}
 
-
+                <div>Largest Budget: {largestBudget?.Budget} <br></br>
+                    Company: {largestBudget?.CompanyName}
+                </div>
             </div>
 
 
 
 
-
-            <button class="reset-button" onClick = {
+            <Button variant="contained" color = "primary" size = "small" onClick = {
                 () => {
                     setTest(0)
                 }
-            }>Reset</button>
+            }>Reset</Button>
+            
                 
 
             <table class="chart-table">
@@ -262,6 +273,7 @@ export const Home = () => {
                 }
             )}
         </table> 
+</> : "You have no current projects, Feel free to go to the projects tab and add one!" }
         </>
     )
 }
