@@ -16,6 +16,10 @@ Meta-Info is an application with project managers and financial decision makers 
 
 Here is the ERD for the models in the api: https://dbdiagram.io/d/61a686bd8c901501c0da20b7
 
+## Meta-Info Sketchboard
+
+Here is the Wireframe for the project: https://sketchboard.me/nC0sUNa5XSd#/
+
 ## Documentation
 
 Register a new User then begin by adding projects, customers, and employees.

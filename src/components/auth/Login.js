@@ -27,7 +27,7 @@ export const Login = () => {
             .then(res => {
                 if ("valid" in res && res.valid && "token" in res) {
                     localStorage.setItem("meta_customer", res.token)
-                    history.push("/")
+                    history.push("/home")
                 }
                 else {
                     existDialog.current.showModal()
@@ -52,7 +52,7 @@ export const Login = () => {
                         <input type="text"
                             onChange={evt => setUsername(evt.target.value)}
                             className="form-control"
-                            placeholder="User name"
+                            
                             required autoFocus />
                     </fieldset>
                     <fieldset>
@@ -60,7 +60,7 @@ export const Login = () => {
                         <input type="text"
                             onChange={evt => set(evt.target.value)}
                             className="form-control"
-                            placeholder="Password"
+                            
                             required autoFocus />
                     </fieldset>
                     <fieldset>
