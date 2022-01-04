@@ -1,5 +1,5 @@
 import { CircularProgress } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { ApplicationViews } from "./ApplicationViews";
 
@@ -8,8 +8,18 @@ import { Register } from "./auth/Register";
 import { NavBar } from "./nav/NavBar";
 
 
-export const MetaInfo = () => (
-  <> {document.readyState === 'complete' ? <>
+export const MetaInfo = () => {
+  const [loading, setLoading] = useState(true)
+  // added a progress circle for load times
+  useEffect(
+  () => {
+    setTimeout(() => setLoading(false), 5000)
+    
+  }, [])
+
+  return ( <>
+  {loading ? <CircularProgress sx = {{marginLeft: "50%", marginTop: "50%"}} /> : 
+  <> 
     <Route
       render={() => {
         if (localStorage.getItem("meta_customer")) {
@@ -31,6 +41,7 @@ export const MetaInfo = () => (
     <Route path="/register">
       <Register />
     </Route>
-    </> : <div><CircularProgress />...Loading your page</div>}
+    
   </>
-);
+    }</>
+)};
