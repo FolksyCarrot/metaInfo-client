@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from "react"
 import { useHistory } from "react-router-dom"
-
+import { Button } from "@mui/material";
 
 export const Employees = () => {
     const [employees, setEmployees] = useState([])
@@ -26,17 +26,17 @@ export const Employees = () => {
     return (
         <>
             <h2>Employees</h2>
-            <button onClick ={
+            <Button variant="contained" sx={{background:"rgb(62, 199, 185)", marginBottom: "15px"}} onClick ={
                 () => history.push("employees/employeeCreateForm")
-            }>Add Employee</button>
+            }>Add Employee</Button>
             {employees.length > 0 ? employees.map(
                 (employee) => {
                     return (
                         <>
                             <div>Name: {employee.name}</div><div>Position: {employee.position}</div><div>Salary: ${employee.salary}</div>
-                            <button onClick = {
+                            <Button variant="outlined" sx={{color:"rgb(62, 199, 185)", marginTop: "15px"}} onClick = {
                                 () => history.push(`/employees/${employee.id}/editForm`)
-                            }>Edit</button>
+                            }>Edit</Button>
                         </>
                     )
                 }

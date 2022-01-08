@@ -4,9 +4,17 @@ import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/rea
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import { useHistory } from "react-router-dom";
 import "./NavBar.css"
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
 export const NavBar = () => {
     const history = useHistory()
+    let width = window.innerWidth
     return(
         <>
             <SideNav className="sideBar"
@@ -26,7 +34,7 @@ export const NavBar = () => {
         }}
 >
     <SideNav.Toggle />
-    <SideNav.Nav defaultSelected="home">
+    <SideNav.Nav defaultSelected="home" >
         <NavItem eventKey="home">
             <NavIcon>
                 
@@ -69,27 +77,31 @@ export const NavBar = () => {
                 Log Out
             </NavText>
         </NavItem>
-        <NavItem eventKey="charts">
-            <NavIcon>
-                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
-            </NavIcon>
-            <NavText>
-                Charts
-            </NavText>
-            <NavItem eventKey="charts/linechart">
-                <NavText>
-                    Line Chart
-                </NavText>
-            </NavItem>
-            <NavItem eventKey="charts/barchart">
-                <NavText>
-                    Bar Chart
-                </NavText>
-            </NavItem>
-            
-        </NavItem>
+        
     </SideNav.Nav>
 </SideNav>
+
+
+
+<Box sx={{ flexGrow: 1, visibility: "hidden" }} className="mobile-navbar">
+      <AppBar position="static"  sx={{background: "rgb(62, 199, 185)"}}>
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            News
+          </Typography>
+          <Button color="inherit">Login</Button>
+        </Toolbar>
+      </AppBar>
+    </Box>
         </>
     )
 }
