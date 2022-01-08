@@ -13,7 +13,7 @@ export const MetaInfo = () => {
   // added a progress circle for load times
   useEffect(
   () => {
-    setTimeout(() => setLoading(false), 5000)
+    setTimeout(() => setLoading(false), 0)
     
   }, [])
 

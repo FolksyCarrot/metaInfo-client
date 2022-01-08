@@ -13,7 +13,8 @@ body {
 }
 
 th, tr {
-    color: rgb(53, 182, 169)
+    color: rgb(62, 199, 185)
+    /*rgb(53, 182, 169) */
 }
 
 .chart-table {
@@ -22,4 +23,25 @@ th, tr {
 
 .reset-button {
     margin-left: 10px;
+}
+
+.viewChartButton {
+    margin-left: 7px;
+}
+
+.largest {
+    color:rgb(62, 199, 185);
+    margin-left: 20px;
+}
+
+@media only screen and (max-width: 400px) {
+    .chart-div {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .table-description {
+        display: none;
+    }
 }

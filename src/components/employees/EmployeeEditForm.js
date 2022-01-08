@@ -1,3 +1,4 @@
+import { Button } from "@mui/material"
 import React, { useEffect, useState} from "react"
 import { useParams } from "react-router-dom"
 import { useHistory } from "react-router-dom"
@@ -111,9 +112,9 @@ export const EmployeeEditForm = () => {
                         } />
                 </div>
             </fieldset>
-            <button className="btn btn-primary employeeCreateForm--button" onClick={submitForm}>
+            <Button variant="contained" sx={{background:"rgb(62, 199, 185)"}} className="btn btn-primary employeeCreateForm--button" onClick={submitForm}>
                 Submit Form
-            </button>
+            </Button>
         </form>
         </>
     )
