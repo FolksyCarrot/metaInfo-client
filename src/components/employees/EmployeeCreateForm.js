@@ -2,7 +2,7 @@ import { Box, Button } from "@mui/material"
 import TextField from '@mui/material/TextField'
 import React, { useEffect, useState} from "react"
 import { useHistory } from "react-router-dom"
-
+import "./employees.css"
 
 export const EmployeeCreateForm = () => {
     const [employee, setEmployee] = useState({})
@@ -34,7 +34,7 @@ export const EmployeeCreateForm = () => {
 
     return (
         <>
-        <div className="employeeCreateForm--h2"><h1 className="employeeCreateForm__title">New Employee Form</h1></div>
+        <div className="employeeCreateForm--h2"><h1 className="employees-font">New Employee Form</h1></div>
         <Box
       component="form"
       sx={{

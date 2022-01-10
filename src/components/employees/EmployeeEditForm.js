@@ -1,12 +1,11 @@
-import { Button } from "@mui/material"
+import { Box, Button, TextField } from "@mui/material"
 import React, { useEffect, useState} from "react"
 import { useParams } from "react-router-dom"
 import { useHistory } from "react-router-dom"
-
+import "./employees.css"
 
 export const EmployeeEditForm = () => {
     const [employee, getEmployee] = useState({})
-    const [updateEmployee, update] = useState({})
     const history = useHistory()
     const {employeeId} = useParams()
 
@@ -30,9 +29,9 @@ export const EmployeeEditForm = () => {
         event.preventDefault()
 
         const employeeObject = {
-            name: updateEmployee.name,
-            position: updateEmployee.position,
-            salary: updateEmployee.salary
+            name: employee.name,
+            position: employee.position,
+            salary: employee.salary
         }
 
         const fetchOption = {
@@ -51,70 +50,52 @@ export const EmployeeEditForm = () => {
     return (
         <>
             <form className="employeeCreateForm">
-            <div className="employeeCreateForm--h2"><h1 className="employeeCreateForm__title">Employee Edit Form</h1></div>
-                <div><img src="" /></div>
+            <div className="employee-div"><h1 className="employees-font">Employee Edit Form</h1>
+                
              
-            
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="description">Name:</label>
-                    <input
-                        required= {true} autoFocus={true}
-                        type="text"
-                        className="form-control-stock"
-                        placeholder="Name"
-                        defaultValue={employee.name}
-                        onChange= {
+            <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+        
+      <TextField id="outlined-primary" label="Name" variant="outlined" required value={employee.name} 
+ onChange= {
                             (event) => {
                                 const copy = {...employee}
                                 copy.name = event.target.value
-                                update(copy)
+                                getEmployee(copy)
                             }
 
                         } />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="description">Position:</label>
-                    <input
-                        required= {true} autoFocus={true}
-                        type="text"
-                        className="form-control-stock"
-                        placeholder="Position"
-                        defaultValue={employee.position}
-                        onChange= {
+      <TextField id="outlined-basic" label="Position" variant="outlined" required  value={employee.position} onChange= {
                             (event) => {
                                 const copy = {...employee}
                                 copy.position = event.target.value
-                                update(copy)
+                                getEmployee(copy)
                             }
 
                         } />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="description">Salary:</label>
-                    <input
-                        required= {true} autoFocus={true}
-                        type="text"
-                        className="form-control-stock"
-                        placeholder="salary"
-                        defaultValue={employee.salary}
-                        onChange= {
+
+      <TextField id="outlined-basic" label="Salary" variant="outlined" required value={employee.salary}  onChange= {
                             (event) => {
                                 const copy = {...employee}
                                 copy.salary = event.target.value
-                                update(copy)
+                                getEmployee(copy)
                             }
 
                         } />
-                </div>
-            </fieldset>
-            <Button variant="contained" sx={{background:"rgb(62, 199, 185)"}} className="btn btn-primary employeeCreateForm--button" onClick={submitForm}>
+      
+    </Box>
+            
+            
+            <Button variant="contained" sx={{background:"rgb(255, 166, 43)", marginTop:"7px"}} className="btn btn-primary employeeCreateForm--button" onClick={submitForm}>
                 Submit Form
             </Button>
+            </div>
         </form>
         </>
     )

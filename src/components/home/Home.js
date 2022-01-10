@@ -261,7 +261,7 @@ export const Home = () => {
                 <div class="largest">Largest Budget: {largestBudget?.Budget} <br></br>
                     Company: {largestBudget?.CompanyName}
                 </div>
-
+                <br></br>
                 <div class = "largest">Largest Cost: {largestCost?.Cost} <br></br>
                     Company: {largestCost?.CostCompanyName}
                 </div>
@@ -270,7 +270,7 @@ export const Home = () => {
 
 
 
-            <Button variant="contained" sx={{background: "rgb(62, 199, 185)"}}  size = "small" onClick = {
+            <Button variant="contained" sx={{background: "rgb(255, 166, 43)"}} id="reset-button-home" size = "small" onClick = {
                 () => {
                     setTest(0)
                 }
@@ -281,9 +281,9 @@ export const Home = () => {
             <Table class="chart-table">
                 <TableHead>
                     <TableRow>
-                        <TableCell align ="left" sx={{color:"rgb(62, 199, 185)"}}>Project #</TableCell>
-                        <TableCell align="left" sx={{color:"rgb(62, 199, 185)"}}>Customer</TableCell>
-                        <TableCell align="left" sx={{color:"rgb(62, 199, 185)"}} className="table-description">Description</TableCell>
+                        <TableCell align ="left" sx={{color:"rgb(255, 166, 43)"}}>Project #</TableCell>
+                        <TableCell align="left" sx={{color:"rgb(255, 166, 43)"}}>Customer</TableCell>
+                        <TableCell align="left" sx={{color:"rgb(255, 166, 43)"}} id="t-description">Description</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -299,7 +299,7 @@ export const Home = () => {
                                 <td>{project.id}</td>
                                 <td>{project.customer.name}</td>
                                 <td className="table-description">{project.description}</td>
-                                <td><Button variant="outlined" sx={{color:"rgb(62, 199, 185)", marginLeft:"30px"}} onClick = {
+                                <td><Button variant="outlined" sx={{color:"black", marginLeft:"30px", borderColor: "rgb(255, 166, 43)"}} onClick = {
                                     () => {
                                         setTest(project.id)
                                     }
@@ -313,7 +313,7 @@ export const Home = () => {
             )}
         </Table> 
         </TableContainer>
-</> : "You have no current projects, Feel free to go to the projects tab and add one!" }
+</> : <div>"You have no current projects, Feel free to go to the projects tab and add one!"</div> }
         </>
     )
 }
