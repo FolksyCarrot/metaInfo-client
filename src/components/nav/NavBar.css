@@ -3,5 +3,23 @@
 }
 
 .sideBar{
-    background: rgb(53, 182, 169);
+    background: rgb(255, 166, 43)
+    /*background: rgb(72, 159, 181); */
+    /*background: rgb(62, 199, 185); */
+}
+
+#mobile-navbar {
+    display: none;
+}
+
+@media only screen and (max-width: 400px) {
+    .sideBar {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #mobile-navbar {
+        display:block;
+    }
 }

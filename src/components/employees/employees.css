@@ -1,0 +1,13 @@
+.employees-font {
+    color: black;
+}
+
+.form-control {
+    
+}
+
+@media only screen and (max-width: 400px) {
+    .employee-div {
+        margin-left: 10px;
+    }
+}

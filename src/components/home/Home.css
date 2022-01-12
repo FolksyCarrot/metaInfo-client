@@ -5,5 +5,61 @@
 }
 
 body {
-    background: rgb(56,56,56)
+    background: rgb(240, 243, 245)
+    /*background: rgb(219, 211, 216) */
+    /*background: rgb(56,56,56) */
 }
+
+.chart-div {
+    display:flex;
+}
+
+th, tr {
+    color: black
+    /*rgb(53, 182, 169) */
+}
+
+.chart-table {
+    padding-left: 10px;
+}
+
+.reset-button {
+    margin-left: 10px;
+}
+
+.viewChartButton {
+    margin-left: 7px;
+}
+
+.largest {
+    color:black;
+    margin-left: 20px;
+}
+
+.table-description{
+    padding-left: 20px;
+}
+
+@media only screen and (max-width: 400px) {
+    .chart-div {
+        flex-direction: column;
+    }
+    .table-description {
+        display: none;
+    }
+    #t-description {
+        display: none;
+    }
+    #line-chart {
+        min-height: 12rem;
+        margin-top: 5px;
+    }
+    #reset-button-home {
+        margin: 10px 0px 0px 10px;
+        background: rgb(255, 166, 43);
+    }
+    .largest {
+        margin-left: 10px;
+    }
+}
+

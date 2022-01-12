@@ -1,3 +1,4 @@
+import { Button } from "@mui/material"
 import React, { useEffect, useState} from "react"
 import { useParams } from "react-router-dom"
 import { useHistory } from "react-router-dom"
@@ -42,9 +43,9 @@ export const ProjectDetails = () => {
     return (
         <>
             <h2>Project Details</h2>
-            <button onClick ={
+            <Button variant="contained" sx={{background:"rgb(255, 166, 43)", marginBottom: "10px"}} onClick ={
                 () => history.push(`/projects/${projectId}/costs/costCreateForm`)
-            }>Add Cost</button>
+            }>Add Cost</Button>
            
                   
             {console.log(project)}
@@ -63,13 +64,13 @@ export const ProjectDetails = () => {
                                 <li>
                                     <div>Expense: {cost.label}</div>
                                     <div>Cost: ${cost.cost}</div>
-                                    <button onClick = {
+                                    <Button variant="outlined" sx={{color:"black", borderColor:"rgb(255, 166, 43)"}} onClick = {
                                         () => history.push(`/projects/${projectId}/costs/${cost.id}/costEditForm`)
-                                    }>Edit</button>
-                                    <button onClick = {
+                                    }>Edit</Button>
+                                    <Button variant="outlined" sx={{color:"black", borderColor:"rgb(255, 166, 43)", marginLeft:"20px"}} onClick = {
                                         (evt) => {deleteCost(evt, cost.id)
                                         .then(() => render())}
-                                    }>Delete</button>
+                                    }>Delete</Button>
                                 </li>
                            </ul>
                         </>
@@ -79,9 +80,9 @@ export const ProjectDetails = () => {
                 </div>
                 <div>Project Start Date: {project.start}</div>
                 <div>Expected to be completed by: {project.expected_completion}</div>
-            <button onClick = {
+            <Button variant="contained" sx={{background: "rgb(255, 166, 43)", marginTop: "10px"}} onClick = {
                 () => history.push(`/projects/${project.id}/editForm`)
-            }>Edit</button>
+            }>Edit</Button>
                         
                     
                

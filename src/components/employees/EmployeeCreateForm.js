@@ -1,10 +1,13 @@
+import { Box, Button } from "@mui/material"
+import TextField from '@mui/material/TextField'
 import React, { useEffect, useState} from "react"
 import { useHistory } from "react-router-dom"
-
+import "./employees.css"
 
 export const EmployeeCreateForm = () => {
     const [employee, setEmployee] = useState({})
     const history = useHistory()
+
 
     const submitForm = (event) => {
         event.preventDefault()
@@ -31,20 +34,18 @@ export const EmployeeCreateForm = () => {
 
     return (
         <>
-            <form className="employeeCreateForm">
-            <div className="employeeCreateForm--h2"><h1 className="employeeCreateForm__title">New Employee Form</h1></div>
-                <div><img src="" /></div>
-             
-            
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="description">Name:</label>
-                    <input
-                        required= {true} autoFocus={true}
-                        type="text"
-                        className="form-control-stock"
-                        
-                        onChange= {
+        <div className="employeeCreateForm--h2"><h1 className="employees-font">New Employee Form</h1></div>
+        <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+        
+      <TextField id="outlined-primary" label="Name" variant="outlined" required sx={{ input: { color: 'white' }}}
+ onChange= {
                             (event) => {
                                 const copy = {...employee}
                                 copy.name = event.target.value
@@ -52,17 +53,7 @@ export const EmployeeCreateForm = () => {
                             }
 
                         } />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="description">Position:</label>
-                    <input
-                        required= {true} autoFocus={true}
-                        type="text"
-                        className="form-control-stock"
-                        
-                        onChange= {
+      <TextField id="outlined-basic" label="Position" variant="outlined" required sx={{ input: { color: 'white' }}} onChange= {
                             (event) => {
                                 const copy = {...employee}
                                 copy.position = event.target.value
@@ -70,17 +61,8 @@ export const EmployeeCreateForm = () => {
                             }
 
                         } />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="description">Salary:</label>
-                    <input
-                        required= {true} autoFocus={true}
-                        type="text"
-                        className="form-control-stock"
-                        
-                        onChange= {
+
+      <TextField id="outlined-basic" label="Salary" variant="outlined" required sx={{ input: { color: 'white' }}} onChange= {
                             (event) => {
                                 const copy = {...employee}
                                 copy.salary = event.target.value
@@ -88,12 +70,13 @@ export const EmployeeCreateForm = () => {
                             }
 
                         } />
-                </div>
-            </fieldset>
-            <button className="btn btn-primary employeeCreateForm--button" onClick={submitForm}>
+      
+    </Box>
+            
+            <Button variant="contained" sx={{background:"rgb(62, 199, 185)", marginTop: "15px"}} className="btn btn-primary employeeCreateForm--button" onClick={submitForm}>
                 Submit Form
-            </button>
-        </form>
+            </Button>
+        
         </>
     )
 
