@@ -6,6 +6,7 @@ import "./employees.css"
 
 export const EmployeeEditForm = () => {
     const [employee, getEmployee] = useState({})
+    const [test, setTest] = useState(false)
     const history = useHistory()
     const {employeeId} = useParams()
 
@@ -15,7 +16,7 @@ export const EmployeeEditForm = () => {
             .then(res => res.json())
             .then((data) => {
                 getEmployee(data)
-            })
+            }).then(()=> setTest(true))
     }
 
     useEffect(
@@ -49,10 +50,11 @@ export const EmployeeEditForm = () => {
 
     return (
         <>
+            {test ? <>
             <form className="employeeCreateForm">
             <div className="employee-div"><h1 className="employees-font">Employee Edit Form</h1>
                 
-             
+                 
             <Box
       component="form"
       sx={{
@@ -61,8 +63,8 @@ export const EmployeeEditForm = () => {
       noValidate
       autoComplete="off"
     >
-        
-      <TextField id="outlined-primary" label="Name" variant="outlined" required value={employee.name} 
+      
+      <TextField id="outlined-primary" className="form-control" label="Name" variant="outlined" required type="text" key={`employee-${employee.name}`} value={employee.name} 
  onChange= {
                             (event) => {
                                 const copy = {...employee}
@@ -71,7 +73,7 @@ export const EmployeeEditForm = () => {
                             }
 
                         } />
-      <TextField id="outlined-basic" label="Position" variant="outlined" required  value={employee.position} onChange= {
+      <TextField id="outlined-basic" label="Position" variant="outlined" required key={`employee-${employee.position}`} value={employee.position} onChange= {
                             (event) => {
                                 const copy = {...employee}
                                 copy.position = event.target.value
@@ -80,7 +82,7 @@ export const EmployeeEditForm = () => {
 
                         } />
 
-      <TextField id="outlined-basic" label="Salary" variant="outlined" required value={employee.salary}  onChange= {
+      <TextField id="outlined-basic" label="Salary" variant="outlined" required key={`employee-${employee.salary}`} value={employee.salary}  onChange= {
                             (event) => {
                                 const copy = {...employee}
                                 copy.salary = event.target.value
@@ -88,15 +90,16 @@ export const EmployeeEditForm = () => {
                             }
 
                         } />
-      
+               
     </Box>
-            
+      
             
             <Button variant="contained" sx={{background:"rgb(255, 166, 43)", marginTop:"7px"}} className="btn btn-primary employeeCreateForm--button" onClick={submitForm}>
                 Submit Form
             </Button>
             </div>
         </form>
+        </>  : ""   }
         </>
     )
 }
