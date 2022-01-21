@@ -12,13 +12,13 @@
     display: none;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
     .sideBar {
         display: none;
     }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
     #mobile-navbar {
         display:block;
     }
