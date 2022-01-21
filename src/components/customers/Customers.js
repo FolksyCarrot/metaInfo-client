@@ -27,7 +27,7 @@ export const Customers = () => {
     return (
         <>
             <h2>Customers</h2>
-            <Button variant="contained" sx={{background:"rgb(62, 199, 185)", marginBottom: "15px"}} onClick ={
+            <Button variant="contained" sx={{background:"rgb(255, 166, 43)", marginBottom: "15px"}} onClick ={
                 () => history.push("customers/customerCreateForm")
             }>Add Customer</Button>
             {customers.length > 0 ? customers.map(
@@ -35,7 +35,7 @@ export const Customers = () => {
                     return (
                         <>
                             <div>Name of Customer: {customer.name}</div>
-                            <Button variant="outlined" sx={{color:"rgb(62, 199, 185)", marginTop: "15px"}} onClick = {
+                            <Button variant="outlined" sx={{color:"black", marginTop: "15px", marginBottom:"5px", borderColor:"rgb(255, 166, 43)"}} onClick = {
                                 () => history.push(`/customers/${customer.id}/editForm`)
                             }>Edit</Button>
                         </>

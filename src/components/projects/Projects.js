@@ -1,3 +1,4 @@
+import { Button } from "@mui/material"
 import React, { useEffect, useState} from "react"
 import { useHistory } from "react-router-dom"
 
@@ -27,9 +28,9 @@ export const Projects = () => {
     return (
         <>
             <h2>Projects</h2>
-            <button onClick ={
+            <Button variant="contained" sx={{background:"rgb(255, 166, 43)", marginBottom: "15px"}} onClick ={
                 () => history.push("projects/projectCreateForm")
-            }>Add Project</button>
+            }>Add Project</Button>
             {projects.length > 0 ? projects.map(
                 (project) => {
                     return (
@@ -38,9 +39,9 @@ export const Projects = () => {
                             <div>Project is for: {project.customer.name}</div>
                             <div>Project Description: {project.description}</div>
                             <div>Has the project has been completed?: {project.is_completed===true? "Yes": "No"}</div>
-                            <button onClick = {
+                            <Button variant="outlined" sx={{color:"black", borderColor:"rgb(255, 166, 43)", marginTop:"5px", marginBottom:"5px"}} onClick = {
                                 () => history.push(`/projects/${project.id}/details`)
-                            }>Details</button>
+                            }>Details</Button>
                         </>
                     )
                 }
