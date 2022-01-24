@@ -1,0 +1,9 @@
+.login--body {
+    margin-left: 20px;
+}
+
+@media only screen and (max-width: 450px) {
+    .login--body {
+        margin-left: 25%;
+    }
+}
