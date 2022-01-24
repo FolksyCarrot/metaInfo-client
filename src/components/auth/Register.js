@@ -1,3 +1,4 @@
+import { Box, Button, TextField } from "@mui/material"
 import React, { useRef, useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import "./Login.css"
@@ -77,40 +78,40 @@ export const Register = (props) => {
                 <button className="button--close" onClick={e => conflictDialog.current.close()}>Close</button>
             </dialog>
 
-            <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal" id="please--register">Please Register</h1>
-                <fieldset>
-                    <label htmlFor="username"> User Name </label>
-                    <input onChange={updateManager}
-                           type="text" id="username" className="form-control"
-                        required autoFocus />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="email"> Email address </label>
-                    <input onChange={updateManager} type="email" id="email" className="form-control"  required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="password"> Password </label>
-                    <input onChange={updateManager} type="text" id="password" className="form-control"  required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="first_name"> First Name </label>
-                    <input onChange={updateManager} type="text" id="first_name" className="form-control"  required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="last_name"> Last Name </label>
-                    <input onChange={updateManager} type="text" id="last_name" className="form-control"  required />
-                </fieldset>
+            <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+        <h1 className="h3 mb-3 font-weight-normal" id="please--register">Please Register</h1>
+        <TextField id="username" sx={{marginBottom:"10px"}} className="form-control" label="Username" variant="outlined" required type="text" 
+                 onChange= {updateManager} />
+        <TextField id="email" sx={{marginBottom:"10px"}} className="form-control" label="Email" variant="outlined" required type="text" 
+                 onChange= {updateManager} />
+        <TextField id="password" sx={{marginBottom:"10px"}} className="form-control" label="Password" variant="outlined" required type="text" 
+                 onChange= {updateManager} />
+        <TextField id="first_name" sx={{marginBottom:"10px"}} className="form-control" label="First Name" variant="outlined" required type="text" 
+                 onChange= {updateManager} />
+        <TextField id="last_name" sx={{marginBottom:"10px"}} className="form-control" label="Last Name" variant="outlined" required type="text" 
+                 onChange= {updateManager} />
+
+    </Box>
+            
                 <select  id ="store_id" onChange = {updateManager}>
                     <option>select company</option>
                     {stores.length > 0?stores?.map(store => {
                         return( <option value ={store.id}>{store.name}</option>)}
                         ): ""}
                 </select>
-                <fieldset>
-                    <button type="submit" onClick = {handleRegister}> Register </button>
-                </fieldset>
-            </form>
+                <br></br>
+                <Button variant="contained" sx={{background:"rgb(255, 166, 43)", marginTop:"7px"}} className="btn btn-primary employeeCreateForm--button" onClick={handleRegister} >
+                Register
+                    </Button>
+                
+            
         </main>
     )
 }

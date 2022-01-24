@@ -299,7 +299,7 @@ export const Home = () => {
                                 <td>{project.id}</td>
                                 <td>{project.customer.name}</td>
                                 <td className="table-description">{project.description}</td>
-                                <td><Button variant="outlined" sx={{color:"black", marginLeft:"30px", borderColor: "rgb(255, 166, 43)"}} onClick = {
+                                <td ><Button  variant="outlined" sx={{color:"black", marginLeft:"10px", borderColor: "rgb(255, 166, 43)"}} onClick = {
                                     () => {
                                         setTest(project.id)
                                     }
@@ -313,7 +313,7 @@ export const Home = () => {
             )}
         </Table> 
         </TableContainer>
-</> : <div>"You have no current projects, Feel free to go to the projects tab and add one!"</div> }
+</> : <div class="fail--safe">"You have no current projects, Feel free to go to the projects tab and add one!"</div> }
         </>
     )
 }

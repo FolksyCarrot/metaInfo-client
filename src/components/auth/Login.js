@@ -1,3 +1,4 @@
+import { Box, Button, TextField } from "@mui/material";
 import React, { useRef, useState } from "react"
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom"
@@ -43,33 +44,29 @@ export const Login = () => {
                 <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
             </dialog>
 
-            <section>
-                <form className="form--login" onSubmit={handleLogin}>
+        <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+                <form className="form--login" >
                     <h1 className="form--heading">Meta Info</h1>
                     <h2 className="form--heading">Please sign in</h2>
-                    <fieldset>
-                        <label htmlFor="inputEmail"> Username </label>
-                        <input type="text"
-                            onChange={evt => setUsername(evt.target.value)}
-                            className="form-control"
-                            
-                            required autoFocus />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="inputEmail"> Password </label>
-                        <input type="text"
-                            onChange={evt => set(evt.target.value)}
-                            className="form-control"
-                            
-                            required autoFocus />
-                    </fieldset>
-                    <fieldset>
-                        <button type="submit">
-                            Sign in
-                        </button>
-                    </fieldset>
+                    <TextField id="outlined-primary" sx={{marginBottom:"10px"}} className="form-control" label="Username" variant="outlined" required type="text" 
+                 onChange= {evt => setUsername(evt.target.value)} />
+
+                    <TextField id="outlined-primary" sx={{marginBottom:"10px"}} className="form-control" label="Password" variant="outlined" required type="text" 
+                 onChange= {evt => set(evt.target.value)} />
+                    
+                    <Button variant="contained" sx={{background:"rgb(255, 166, 43)", marginTop:"7px"}} className="btn btn-primary employeeCreateForm--button" onClick={handleLogin} >
+                Submit Form
+                    </Button>
+
                 </form>
-            </section>
+            </Box>
                 <section className="link--register">
                     <Link to="/register">Not a member yet?</Link>
                 </section>

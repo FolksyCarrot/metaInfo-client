@@ -10,6 +10,10 @@ body {
     /*background: rgb(56,56,56) */
 }
 
+.viewChartsButton{
+    margin-left: 30px;
+}
+
 .chart-div {
     display:flex;
 }
@@ -27,10 +31,6 @@ th, tr {
     margin-left: 10px;
 }
 
-.viewChartButton {
-    margin-left: 7px;
-}
-
 .largest {
     color:black;
     margin-left: 20px;
@@ -40,7 +40,7 @@ th, tr {
     padding-left: 20px;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
     .chart-div {
         flex-direction: column;
     }
@@ -63,3 +63,8 @@ th, tr {
     }
 }
 
+
+.fail--safe {
+    margin-top: 25%;
+    margin-left: 25%;
+}
